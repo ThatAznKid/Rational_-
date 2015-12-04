@@ -1,9 +1,9 @@
-// Team Unown -- Jiawei Chen, Owen Zeng
+// Team ? -- Jiawei Chen, Sean Bourke
 // APCS1 pd9
-// HW37 -- Rational Equality
+// HW #41: In America, the Driver Sits on the Left
 // 2015-11-24
 
-public class Rational {
+public class Rational implements Comparable{
     public int numerator;
     public int denominator;
     
@@ -40,12 +40,6 @@ public class Rational {
     public void divide(Rational other) {
         this.numerator *= other.denominator;
         this.denominator *= other.numerator;
-    }
-    
-    public static void main(String[] args) {
-        Rational r = new Rational(1, 5);
-        Rational s = new Rational(3, 14);
-        System.out.println(s.equals(r));
     }
     
     public void add(Rational other){
@@ -106,12 +100,19 @@ public class Rational {
             return gcdER (b , (a-b));
         }
     }
-    
-    public float compareTo (Rational other){
-        other.subtract(this);//figuring out which one is larger by taking difference of the two
-        return this.numerator / this.denominator;//returning "Rational this" which fits the function's requirements 
+
+    public int compareTo(Rational r) {
+        double calling = floatValue();
+        double parameter = r.floatValue();
+
+        if ( calling == parameter ) {
+	    return 0;
+        } else if ( calling > parameter ) {
+            return 1;
+        }
+        return -1;
     }
-    
+
     public boolean equals(Object other){
         boolean retVal = this == other;//checks if the Object is a Rational
 	if (!retVal) {
@@ -123,5 +124,12 @@ public class Rational {
 	    }
 	}
 	return false;
+    }
+    public static void main (String [] args) { 
+	Rational r = new Rational (2,4); 
+	Rational s = new Rational (1,2);  
+	System.out.println (r); 
+	System.out.println (s);
+	System.out.println (r.compareTo (s));
     }
 }
