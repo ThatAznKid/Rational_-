@@ -101,9 +101,10 @@ public class Rational implements Comparable{
         }
     }
 
-    public int compareTo(Rational r) {
+    public int compareTo(Object r) {
+	Rational g=(Rational)r;
         double calling = floatValue();
-        double parameter = r.floatValue();
+        double parameter = g.floatValue();
 
         if ( calling == parameter ) {
 	    return 0;
@@ -128,8 +129,11 @@ public class Rational implements Comparable{
     public static void main (String [] args) { 
 	Rational r = new Rational (2,4); 
 	Rational s = new Rational (1,2);  
+	Rational t = new Rational (2,5); 
+	Rational u = new Rational (1,3);  
 	System.out.println (r); 
 	System.out.println (s);
-	System.out.println (r.compareTo (s));
+	System.out.println (r.compareTo (s)); 
+	System.out.println (t.compareTo (u));
     }
 }

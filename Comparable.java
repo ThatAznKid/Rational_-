@@ -1,4 +1,4 @@
 
 public interface Comparable{
-    public int compareTo(Rational r);
+    public int compareTo(Object r);
 }
